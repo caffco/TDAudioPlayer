@@ -16,6 +16,7 @@
 @property (strong, nonatomic) TDAudioInputStreamer *streamer;
 @property (strong, nonatomic) NSMutableDictionary *nowPlayingMetaInfo;
 @property (assign, nonatomic) TDAudioPlayerState state;
+@property (copy, nonatomic) NSURL *playingURL;
 
 @property (strong, nonatomic) NSTimer *timer;
 @property (assign, nonatomic) NSUInteger elapsedTime;
@@ -60,6 +61,7 @@
 {
     [self reset];
     self.streamer = [[TDAudioInputStreamer alloc] initWithURL:url];
+    self.playingURL = url;
     [self changeAudioMetaInfo:meta];
 }
 
@@ -79,6 +81,7 @@
 {
     [self.streamer stop];
     self.streamer = nil;
+    self.playingURL = nil;
 
     self.state = TDAudioPlayerStateStopped;
     self.elapsedTime = 0;

@@ -23,6 +23,7 @@ typedef NS_ENUM(NSInteger, TDAudioPlayerState) {
 @interface TDAudioPlayer : NSObject
 
 @property (assign, nonatomic, readonly) TDAudioPlayerState state;
+@property (copy, nonatomic, readonly) NSURL *playingURL;
 
 + (instancetype)sharedAudioPlayer;
 
